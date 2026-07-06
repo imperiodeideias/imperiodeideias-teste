@@ -72,6 +72,11 @@ function CasePage() {
             <h1 className="heading-hero mt-6 max-w-5xl">{study.headline}</h1>
           </div>
         </div>
+        <div className="container-imperio mt-10">
+          <div className="overflow-hidden rounded-3xl border border-border">
+            <img src={study.image} alt={`${study.client} — ${study.headline}`} className="w-full h-auto object-cover" />
+          </div>
+        </div>
       </section>
 
       <Section eyebrow="Contexto"><p className="text-lg text-muted-foreground max-w-3xl">{study.context}</p></Section>

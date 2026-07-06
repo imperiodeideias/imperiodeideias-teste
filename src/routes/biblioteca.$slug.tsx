@@ -56,6 +56,11 @@ function LibraryItemPage() {
           <h1 className="heading-hero mt-6">{item.title}</h1>
           <p className="mt-6 text-sm text-muted-foreground">Publicado em {new Date(item.date).toLocaleDateString("pt-BR")} · {item.author}</p>
         </div>
+        <div className="container-imperio max-w-5xl mt-10">
+          <div className="overflow-hidden rounded-3xl border border-border">
+            <img src={item.image} alt={item.title} className="w-full h-auto object-cover" />
+          </div>
+        </div>
       </section>
 
       <Section>

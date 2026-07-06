@@ -33,34 +33,43 @@ function CasesIndex() {
 
       <Section>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {CASES.map((c) => (
-            <Link
-              key={c.slug}
-              to="/cases/$slug"
-              params={{ slug: c.slug }}
-              className="group relative overflow-hidden rounded-3xl p-8 min-h-[280px] flex flex-col justify-between transition-transform hover:-translate-y-1"
-              style={{
-                background:
-                  c.color === "yellow"
-                    ? "var(--color-brand-yellow)"
-                    : c.color === "orange"
-                      ? "var(--color-brand-orange)"
-                      : c.color === "cream"
-                        ? "var(--color-brand-cream)"
-                        : "var(--color-surface-2)",
-                color: c.color === "dark" ? "var(--color-foreground)" : "#111",
-              }}
-            >
-              <div>
-                <span className="text-xs uppercase tracking-widest opacity-70">{c.sector}</span>
-                <h3 className="mt-4 text-2xl font-extrabold leading-tight">{c.headline}</h3>
-                <p className="mt-3 text-sm opacity-80">{c.client}</p>
-              </div>
-              <span className="inline-flex items-center gap-1 text-sm font-semibold group-hover:gap-2 transition-all">
-                Ver estudo <ArrowUpRight size={16} />
-              </span>
-            </Link>
-          ))}
+          {CASES.map((c) => {
+            const bg =
+              c.color === "yellow"
+                ? "var(--color-brand-yellow)"
+                : c.color === "orange"
+                  ? "var(--color-brand-orange)"
+                  : c.color === "cream"
+                    ? "var(--color-brand-cream)"
+                    : "var(--color-surface-2)";
+            const dark = c.color !== "dark";
+            return (
+              <Link
+                key={c.slug}
+                to="/cases/$slug"
+                params={{ slug: c.slug }}
+                className="group relative overflow-hidden rounded-3xl min-h-[380px] flex flex-col justify-between transition-transform hover:-translate-y-1"
+                style={{ background: bg, color: dark ? "#111" : "var(--color-foreground)" }}
+              >
+                <div className="p-8 pb-4">
+                  <span className="text-xs uppercase tracking-widest opacity-70">{c.sector}</span>
+                  <h3 className="mt-4 text-2xl font-extrabold leading-tight">{c.headline}</h3>
+                  <p className="mt-3 text-sm opacity-80">{c.client}</p>
+                </div>
+                <div className="relative mt-4 h-56 overflow-hidden">
+                  <img
+                    src={c.image}
+                    alt={`${c.client} — ${c.headline}`}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <span className="absolute right-6 top-6 inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/10 backdrop-blur">
+                  <ArrowUpRight size={18} />
+                </span>
+              </Link>
+            );
+          })}
         </div>
       </Section>
 

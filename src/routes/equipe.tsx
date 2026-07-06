@@ -42,10 +42,30 @@ function Equipe() {
       <Section>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {TEAM.map((m) => (
-            <div key={m.name} className="surface-card p-8">
-              <h3 className="text-xl font-bold">{m.name}</h3>
-              <p className="mt-1 text-primary text-sm font-semibold uppercase tracking-widest">{m.role}</p>
-              <p className="mt-4 text-muted-foreground">{m.bio}</p>
+            <div key={m.name} className="group overflow-hidden rounded-3xl border border-border bg-surface-1">
+              <div className="aspect-[4/5] overflow-hidden">
+                <img
+                  src={m.image}
+                  alt={m.name}
+                  loading="lazy"
+                  className="h-full w-full object-cover grayscale hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold">{m.name}</h3>
+                <p className="mt-1 text-primary text-sm font-semibold uppercase tracking-widest">{m.role}</p>
+                <p className="mt-4 text-sm text-muted-foreground">{m.bio}</p>
+                {m.linkedin && (
+                  <a
+                    href={m.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline"
+                  >
+                    LinkedIn →
+                  </a>
+                )}
+              </div>
             </div>
           ))}
         </div>

@@ -6,6 +6,7 @@ import { SERVICES } from "@/content/services";
 import { SEGMENTS } from "@/content/segments";
 import { CASES } from "@/content/cases";
 import { LIBRARY } from "@/content/library";
+import { CLIENT_LOGOS, SECTOR_IMAGES } from "@/content/brands";
 
 const HOME_FAQ = [
   { q: "Que tipo de empresa a Império atende?", a: "Atendemos empresas de médio e grande porte em setores como saúde, indústria, tecnologia, franquias, SaaS, comércio e serviços B2B." },
@@ -34,6 +35,9 @@ const METODOLOGIA = [
   { n: "05", t: "Monitoramento", d: "Indicadores em tempo real, reporte transparente." },
   { n: "06", t: "Otimização", d: "Ajuste de rota com base em evidência." },
 ];
+
+const FEATURED_CASES = CASES.slice(0, 6);
+const LOGOS_MARQUEE = [...CLIENT_LOGOS, ...CLIENT_LOGOS];
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -79,6 +83,112 @@ function Home() {
         </div>
       </section>
 
+      {/* PROJETOS EM DESTAQUE — cards com imagens reais */}
+      <Section eyebrow="Projetos em destaque" title="Do diagnóstico ao resultado.">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {FEATURED_CASES.map((c) => {
+            const bg =
+              c.color === "yellow"
+                ? "var(--color-brand-yellow)"
+                : c.color === "orange"
+                  ? "var(--color-brand-orange)"
+                  : c.color === "cream"
+                    ? "var(--color-brand-cream)"
+                    : "var(--color-surface-2)";
+            const dark = c.color !== "dark";
+            return (
+              <Link
+                key={c.slug}
+                to="/cases/$slug"
+                params={{ slug: c.slug }}
+                className="group relative overflow-hidden rounded-3xl min-h-[380px] flex flex-col justify-between transition-transform hover:-translate-y-1"
+                style={{ background: bg, color: dark ? "#111" : "var(--color-foreground)" }}
+              >
+                <div className="p-8 pb-4">
+                  <span className="text-xs uppercase tracking-widest opacity-70">{c.sector}</span>
+                  <h3 className="mt-4 text-2xl font-extrabold leading-tight">{c.headline}</h3>
+                </div>
+                <div className="relative mt-4 h-56 overflow-hidden">
+                  <img
+                    src={c.image}
+                    alt={`${c.client} — ${c.headline}`}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <span className="absolute right-6 top-6 inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/10 backdrop-blur">
+                  <ArrowUpRight size={18} />
+                </span>
+              </Link>
+            );
+          })}
+        </div>
+        <div className="mt-10">
+          <Button asChild variant="pill" size="pill">
+            <Link to="/cases">Ver todos os cases</Link>
+          </Button>
+        </div>
+      </Section>
+
+      {/* TRABALHAMOS COM MARCAS — seção clara com imagens em destaque */}
+      <section className="py-20 lg:py-28 bg-brand-cream text-neutral-900">
+        <div className="container-imperio">
+          <div className="grid gap-12 lg:grid-cols-12 items-end">
+            <div className="lg:col-span-6">
+              <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
+                Setores
+              </span>
+              <h2 className="heading-section mt-4 text-neutral-900">
+                Trabalhamos com marcas de diferentes setores.
+              </h2>
+              <p className="mt-5 text-lg text-neutral-600 max-w-xl">
+                Respeitando a complexidade de cada mercado, seus desafios específicos e seus ambientes competitivos —
+                da saúde à indústria, da tecnologia ao varejo.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button asChild variant="pillFilled" size="pill">
+                  <Link to="/segmentos">Ver segmentos</Link>
+                </Button>
+              </div>
+            </div>
+            <div className="lg:col-span-6 grid grid-cols-2 gap-4">
+              {SECTOR_IMAGES.map((src) => (
+                <div key={src} className="overflow-hidden rounded-3xl bg-white/60 aspect-[4/5]">
+                  <img
+                    src={src}
+                    alt=""
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* MARQUEE DE LOGOS DE CLIENTES */}
+      <section className="py-12 lg:py-16 bg-white text-neutral-900 overflow-hidden border-y border-black/5">
+        <div className="container-imperio mb-8">
+          <p className="text-xs uppercase tracking-[0.18em] text-neutral-500 font-semibold">
+            +100 clientes que confiam e voltaram
+          </p>
+        </div>
+        <div className="relative">
+          <div className="flex gap-12 animate-[imperio-marquee_45s_linear_infinite] whitespace-nowrap">
+            {LOGOS_MARQUEE.map((l, i) => (
+              <img
+                key={`${l.name}-${i}`}
+                src={l.image}
+                alt={l.name}
+                loading="lazy"
+                className="h-12 lg:h-14 w-auto shrink-0 object-contain opacity-70 hover:opacity-100 transition-opacity"
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* COMO AJUDAMOS */}
       <Section
         eyebrow="Como ajudamos empresas"
@@ -98,6 +208,22 @@ function Home() {
           ))}
         </div>
       </Section>
+
+      {/* NÚMEROS */}
+      <section className="py-16 border-y border-border">
+        <div className="container-imperio grid gap-10 md:grid-cols-3">
+          {[
+            { n: "+50.000", t: "Horas de dedicação em projetos" },
+            { n: "+100", t: "Clientes que confiam e voltaram" },
+            { n: "+2.000", t: "Projetos realizados com resultado" },
+          ].map((s) => (
+            <div key={s.t}>
+              <p className="text-5xl lg:text-6xl font-extrabold text-primary tracking-tight">{s.n}</p>
+              <p className="mt-3 text-muted-foreground">{s.t}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* SERVIÇOS */}
       <Section id="servicos" eyebrow="Serviços" title="Um portfólio completo para marcas que competem em atenção e em resultado." intro="Da estratégia à operação de IA — todas as disciplinas necessárias sob o mesmo teto.">
@@ -171,62 +297,32 @@ function Home() {
         </div>
       </Section>
 
-      {/* CASES */}
-      <Section eyebrow="Cases" title="Projetos em destaque.">
-        <div className="grid gap-6 lg:grid-cols-3">
-          {CASES.map((c) => (
-            <Link
-              key={c.slug}
-              to="/cases/$slug"
-              params={{ slug: c.slug }}
-              className="group relative overflow-hidden rounded-3xl p-8 min-h-[280px] flex flex-col justify-between transition-transform hover:-translate-y-1"
-              style={{
-                background:
-                  c.color === "yellow"
-                    ? "var(--color-brand-yellow)"
-                    : c.color === "orange"
-                      ? "var(--color-brand-orange)"
-                      : c.color === "cream"
-                        ? "var(--color-brand-cream)"
-                        : "var(--color-surface-2)",
-                color: c.color === "dark" ? "var(--color-foreground)" : "#111",
-              }}
-            >
-              <div>
-                <span className="text-xs uppercase tracking-widest opacity-70">{c.sector}</span>
-                <h3 className="mt-4 text-2xl font-extrabold leading-tight">{c.headline}</h3>
-              </div>
-              <span className="inline-flex items-center gap-1 text-sm font-semibold group-hover:gap-2 transition-all">
-                Ver estudo <ArrowUpRight size={16} />
-              </span>
-            </Link>
-          ))}
-        </div>
-        <div className="mt-10">
-          <Button asChild variant="pill" size="pill">
-            <Link to="/cases">Ver todos os cases</Link>
-          </Button>
-        </div>
-      </Section>
-
-      {/* BIBLIOTECA */}
-      <Section eyebrow="Biblioteca" title="Conteúdo prático para líderes de marketing." intro="Guias, checklists, pesquisas e artigos — construídos para uso, não para vaidade.">
+      {/* BIBLIOTECA / INSIGHTS */}
+      <Section eyebrow="Insights & bastidores" title="Conteúdo prático para líderes de marketing." intro="Guias, checklists, pesquisas e artigos — construídos para uso, não para vaidade.">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {LIBRARY.slice(0, 3).map((i) => (
             <Link
               key={i.slug}
               to="/biblioteca/$slug"
               params={{ slug: i.slug }}
-              className="surface-card surface-card-hover p-8 flex flex-col justify-between min-h-[220px]"
+              className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-surface-1 hover:border-primary/50 transition-colors"
             >
-              <div>
-                <span className="text-xs uppercase tracking-widest text-primary">{i.type}</span>
-                <h3 className="mt-3 text-xl font-bold leading-snug">{i.title}</h3>
-                <p className="mt-3 text-sm text-muted-foreground">{i.summary}</p>
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src={i.image}
+                  alt={i.title}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
               </div>
-              <span className="mt-6 inline-flex items-center gap-1 text-sm text-primary">
-                Ler <ArrowUpRight size={16} />
-              </span>
+              <div className="p-6 flex-1 flex flex-col">
+                <span className="text-xs uppercase tracking-widest text-primary">{i.type}</span>
+                <h3 className="mt-3 text-lg font-bold leading-snug">{i.title}</h3>
+                <p className="mt-3 text-sm text-muted-foreground">{i.summary}</p>
+                <span className="mt-6 inline-flex items-center gap-1 text-sm text-primary">
+                  Ler <ArrowUpRight size={16} />
+                </span>
+              </div>
             </Link>
           ))}
         </div>
