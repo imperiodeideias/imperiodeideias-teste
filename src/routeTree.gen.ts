@@ -16,6 +16,7 @@ import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicosIndexRouteImport } from './routes/servicos.index'
 import { Route as SegmentosIndexRouteImport } from './routes/segmentos.index'
+import { Route as CasesIndexRouteImport } from './routes/cases.index'
 import { Route as ServicosSlugRouteImport } from './routes/servicos.$slug'
 import { Route as SegmentosSlugRouteImport } from './routes/segmentos.$slug'
 
@@ -54,6 +55,11 @@ const SegmentosIndexRoute = SegmentosIndexRouteImport.update({
   path: '/segmentos/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CasesIndexRoute = CasesIndexRouteImport.update({
+  id: '/cases/',
+  path: '/cases/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicosSlugRoute = ServicosSlugRouteImport.update({
   id: '/servicos/$slug',
   path: '/servicos/$slug',
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/sobre': typeof SobreRoute
   '/segmentos/$slug': typeof SegmentosSlugRoute
   '/servicos/$slug': typeof ServicosSlugRoute
+  '/cases/': typeof CasesIndexRoute
   '/segmentos/': typeof SegmentosIndexRoute
   '/servicos/': typeof ServicosIndexRoute
 }
@@ -84,6 +91,7 @@ export interface FileRoutesByTo {
   '/sobre': typeof SobreRoute
   '/segmentos/$slug': typeof SegmentosSlugRoute
   '/servicos/$slug': typeof ServicosSlugRoute
+  '/cases': typeof CasesIndexRoute
   '/segmentos': typeof SegmentosIndexRoute
   '/servicos': typeof ServicosIndexRoute
 }
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/sobre': typeof SobreRoute
   '/segmentos/$slug': typeof SegmentosSlugRoute
   '/servicos/$slug': typeof ServicosSlugRoute
+  '/cases/': typeof CasesIndexRoute
   '/segmentos/': typeof SegmentosIndexRoute
   '/servicos/': typeof ServicosIndexRoute
 }
@@ -109,6 +118,7 @@ export interface FileRouteTypes {
     | '/sobre'
     | '/segmentos/$slug'
     | '/servicos/$slug'
+    | '/cases/'
     | '/segmentos/'
     | '/servicos/'
   fileRoutesByTo: FileRoutesByTo
@@ -120,6 +130,7 @@ export interface FileRouteTypes {
     | '/sobre'
     | '/segmentos/$slug'
     | '/servicos/$slug'
+    | '/cases'
     | '/segmentos'
     | '/servicos'
   id:
@@ -131,6 +142,7 @@ export interface FileRouteTypes {
     | '/sobre'
     | '/segmentos/$slug'
     | '/servicos/$slug'
+    | '/cases/'
     | '/segmentos/'
     | '/servicos/'
   fileRoutesById: FileRoutesById
@@ -143,6 +155,7 @@ export interface RootRouteChildren {
   SobreRoute: typeof SobreRoute
   SegmentosSlugRoute: typeof SegmentosSlugRoute
   ServicosSlugRoute: typeof ServicosSlugRoute
+  CasesIndexRoute: typeof CasesIndexRoute
   SegmentosIndexRoute: typeof SegmentosIndexRoute
   ServicosIndexRoute: typeof ServicosIndexRoute
 }
@@ -198,6 +211,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SegmentosIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cases/': {
+      id: '/cases/'
+      path: '/cases'
+      fullPath: '/cases/'
+      preLoaderRoute: typeof CasesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/servicos/$slug': {
       id: '/servicos/$slug'
       path: '/servicos/$slug'
@@ -223,6 +243,7 @@ const rootRouteChildren: RootRouteChildren = {
   SobreRoute: SobreRoute,
   SegmentosSlugRoute: SegmentosSlugRoute,
   ServicosSlugRoute: ServicosSlugRoute,
+  CasesIndexRoute: CasesIndexRoute,
   SegmentosIndexRoute: SegmentosIndexRoute,
   ServicosIndexRoute: ServicosIndexRoute,
 }
