@@ -4,8 +4,8 @@ export const SITE = {
   description:
     "Agência estratégica de marketing, branding, comunicação, design, SEO, GEO, AEO e inteligência artificial. Da criação ao crescimento — com clareza, consistência e foco em resultado.",
   email: "contato@imperiodeideias.com.br",
-  phone: "+55 (43) 3025-6363",
-  city: "Londrina, PR",
+  phone: "+55 (11) 95827-9176",
+  city: "São Paulo, SP",
   whatsapp: {
     number: "5511958279176",
     href: "https://wa.me/5511958279176",
