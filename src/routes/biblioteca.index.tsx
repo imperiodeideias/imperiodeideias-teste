@@ -52,22 +52,30 @@ function BibliotecaIndex() {
           ))}
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {items.map((i) => (
             <Link
               key={i.slug}
               to="/biblioteca/$slug"
               params={{ slug: i.slug }}
-              className="surface-card surface-card-hover p-8 group flex flex-col justify-between min-h-[240px]"
+              className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-surface-1 hover:border-primary/50 transition-colors"
             >
-              <div>
-                <span className="text-xs uppercase tracking-widest text-primary">{i.type}</span>
-                <h3 className="mt-3 text-xl font-bold leading-snug">{i.title}</h3>
-                <p className="mt-3 text-sm text-muted-foreground">{i.summary}</p>
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src={i.image}
+                  alt={i.title}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
               </div>
-              <span className="mt-6 inline-flex items-center gap-1 text-sm text-primary group-hover:gap-2 transition-all">
-                Ler <ArrowUpRight size={16} />
-              </span>
+              <div className="p-6 flex-1 flex flex-col">
+                <span className="text-xs uppercase tracking-widest text-primary">{i.type}</span>
+                <h3 className="mt-3 text-lg font-bold leading-snug">{i.title}</h3>
+                <p className="mt-3 text-sm text-muted-foreground">{i.summary}</p>
+                <span className="mt-auto pt-6 inline-flex items-center gap-1 text-sm text-primary group-hover:gap-2 transition-all">
+                  Ler <ArrowUpRight size={16} />
+                </span>
+              </div>
             </Link>
           ))}
         </div>

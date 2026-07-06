@@ -6,7 +6,10 @@ export type LibraryItem = {
   body: string;
   date: string;
   author: string;
+  image: string;
 };
+
+const IMG = "https://imperiodeideias.com.br/wp-content/uploads/2026/05";
 
 export const LIBRARY: LibraryItem[] = [
   {
@@ -18,6 +21,7 @@ export const LIBRARY: LibraryItem[] = [
       "Este guia apresenta o método da Império para estruturar conteúdo, schema, autoridade e citabilidade em mecanismos de resposta e IA generativa.",
     date: "2026-06-18",
     author: "Equipe Império",
+    image: `${IMG}/Insights01.jpg`,
   },
   {
     slug: "checklist-seo-tecnico",
@@ -27,6 +31,7 @@ export const LIBRARY: LibraryItem[] = [
     body: "Um checklist objetivo para líderes de marketing conversarem com times técnicos e agências.",
     date: "2026-05-30",
     author: "Equipe Império",
+    image: `${IMG}/Insights02.jpg`,
   },
   {
     slug: "template-brief-branding",
@@ -36,6 +41,7 @@ export const LIBRARY: LibraryItem[] = [
     body: "Modelo em blocos, com perguntas guiadas para lideranças de marketing e comercial.",
     date: "2026-04-22",
     author: "Equipe Império",
+    image: `${IMG}/Insights03.jpg`,
   },
   {
     slug: "artigo-marketing-estrategico",
@@ -45,6 +51,7 @@ export const LIBRARY: LibraryItem[] = [
     body: "O texto analisa o papel do marketing estratégico dentro de operações que precisam crescer com margem.",
     date: "2026-03-10",
     author: "Equipe Império",
+    image: `${IMG}/Insights04.jpg`,
   },
   {
     slug: "pesquisa-maturidade-marketing",
@@ -54,6 +61,7 @@ export const LIBRARY: LibraryItem[] = [
     body: "Relatório completo com benchmarks por setor, porte e maturidade.",
     date: "2026-02-14",
     author: "Equipe Império",
+    image: `${IMG}/Insights05.jpg`,
   },
   {
     slug: "calculadora-cac-ltv",
@@ -63,6 +71,27 @@ export const LIBRARY: LibraryItem[] = [
     body: "Insira poucos números e receba uma leitura rápida de eficiência de marketing e vendas.",
     date: "2026-01-08",
     author: "Equipe Império",
+    image: `${IMG}/Insights06.jpg`,
+  },
+  {
+    slug: "portfolio-viral-e-a-prova-do-real",
+    type: "Artigo",
+    title: "Portfólio viral não é prova. Resultado é.",
+    summary: "Por que mockup bonito e print de e-mail não substituem case real com dado auditável.",
+    body: "Um recorte crítico sobre o mercado de agências e a diferença entre imagem e substância.",
+    date: "2025-08-26",
+    author: "Equipe Império",
+    image: `${IMG}/Insights07.jpg`,
+  },
+  {
+    slug: "reposicionamento-nao-e-milagre",
+    type: "Artigo",
+    title: "Reposicionamento não é milagre — é método.",
+    summary: "O que separa reposicionamento real de troca de logotipo com storytelling.",
+    body: "Analisamos o que muda de fato quando uma marca reposiciona categoria, promessa e comunicação.",
+    date: "2025-10-13",
+    author: "Equipe Império",
+    image: `${IMG}/Insights08.jpg`,
   },
 ];
 
