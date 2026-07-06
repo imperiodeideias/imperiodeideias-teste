@@ -6,9 +6,14 @@ export const SITE = {
   email: "contato@imperiodeideias.com.br",
   phone: "+55 (43) 3025-6363",
   city: "Londrina, PR",
+  whatsapp: {
+    number: "5511958279176",
+    href: "https://wa.me/5511958279176",
+  },
   social: {
     instagram: "https://www.instagram.com/imperiodeideias/",
-    linkedin: "https://www.linkedin.com/company/imperiodeideias/",
+    linkedin: "https://br.linkedin.com/company/agencia-imperiodeideias",
+    youtube: "https://www.youtube.com/c/ImperiodeIdeias/channels",
   },
 };
 

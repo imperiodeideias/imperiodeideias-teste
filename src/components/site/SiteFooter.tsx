@@ -1,48 +1,80 @@
 import { Link } from "@tanstack/react-router";
+import { Instagram, Linkedin, Youtube } from "lucide-react";
 import { SITE, MAIN_NAV } from "@/lib/site";
 import { SERVICES } from "@/content/services";
 import logo from "@/assets/imperio-logo.png";
 
+const SOCIALS = [
+  { label: "Instagram", href: SITE.social.instagram, Icon: Instagram },
+  { label: "LinkedIn", href: SITE.social.linkedin, Icon: Linkedin },
+  { label: "YouTube", href: SITE.social.youtube, Icon: Youtube },
+];
+
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border mt-24">
-      <div className="container-imperio py-16 grid gap-12 lg:grid-cols-4">
-        <div className="lg:col-span-1 space-y-5">
-          <img src={logo} alt={SITE.name} className="h-9 w-auto" width={160} height={36} />
-          <p className="text-sm text-muted-foreground max-w-xs">{SITE.description}</p>
-          <div className="flex gap-3 text-sm">
-            <a href={SITE.social.instagram} target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary">Instagram</a>
-            <span className="text-border">·</span>
-            <a href={SITE.social.linkedin} target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary">LinkedIn</a>
+    <footer className="border-t border-border mt-24 bg-background">
+      <div className="container-imperio py-16 grid gap-12 lg:grid-cols-12">
+        {/* Brand */}
+        <div className="lg:col-span-4 space-y-5">
+          <img src={logo} alt={SITE.name} className="h-10 w-auto" width={200} height={40} />
+          <p className="text-sm text-muted-foreground max-w-sm leading-relaxed">
+            A Império é uma agência estratégica que atua da criação ao crescimento de marcas
+            e projetos, acompanhando cada etapa com clareza, consistência e foco em resultado.
+          </p>
+          <div className="flex items-center gap-3">
+            {SOCIALS.map(({ label, href, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground/80 transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
+              >
+                <Icon className="h-4 w-4" aria-hidden="true" />
+              </a>
+            ))}
           </div>
         </div>
 
-        <div>
+        {/* Navegação */}
+        <div className="lg:col-span-3">
           <h4 className="text-sm font-semibold uppercase tracking-widest text-foreground/60 mb-4">Navegação</h4>
           <ul className="space-y-2 text-sm">
             {MAIN_NAV.map((item) => (
               <li key={item.to}>
-                <Link to={item.to} className="text-foreground/85 hover:text-primary transition-colors">{item.label}</Link>
+                <Link to={item.to} className="text-foreground/85 hover:text-primary transition-colors">
+                  {item.label}
+                </Link>
               </li>
             ))}
           </ul>
         </div>
 
-        <div>
+        {/* Serviços */}
+        <div className="lg:col-span-3">
           <h4 className="text-sm font-semibold uppercase tracking-widest text-foreground/60 mb-4">Serviços</h4>
           <ul className="space-y-2 text-sm">
             {SERVICES.slice(0, 7).map((s) => (
               <li key={s.slug}>
-                <Link to="/servicos/$slug" params={{ slug: s.slug }} className="text-foreground/85 hover:text-primary transition-colors">{s.title}</Link>
+                <Link
+                  to="/servicos/$slug"
+                  params={{ slug: s.slug }}
+                  className="text-foreground/85 hover:text-primary transition-colors"
+                >
+                  {s.title}
+                </Link>
               </li>
             ))}
           </ul>
         </div>
 
-        <div>
+        {/* Contato */}
+        <div className="lg:col-span-2">
           <h4 className="text-sm font-semibold uppercase tracking-widest text-foreground/60 mb-4">Contato</h4>
           <ul className="space-y-2 text-sm text-foreground/85">
-            <li><a href={`mailto:${SITE.email}`} className="hover:text-primary">{SITE.email}</a></li>
+            <li><a href={`mailto:${SITE.email}`} className="hover:text-primary break-all">{SITE.email}</a></li>
+            <li><a href={SITE.whatsapp.href} target="_blank" rel="noopener noreferrer" className="hover:text-primary">WhatsApp</a></li>
             <li>{SITE.phone}</li>
             <li>{SITE.city}</li>
           </ul>
