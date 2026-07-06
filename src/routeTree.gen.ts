@@ -21,6 +21,7 @@ import { Route as BibliotecaIndexRouteImport } from './routes/biblioteca.index'
 import { Route as ServicosSlugRouteImport } from './routes/servicos.$slug'
 import { Route as SegmentosSlugRouteImport } from './routes/segmentos.$slug'
 import { Route as CasesSlugRouteImport } from './routes/cases.$slug'
+import { Route as BibliotecaSlugRouteImport } from './routes/biblioteca.$slug'
 
 const SobreRoute = SobreRouteImport.update({
   id: '/sobre',
@@ -82,6 +83,11 @@ const CasesSlugRoute = CasesSlugRouteImport.update({
   path: '/cases/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BibliotecaSlugRoute = BibliotecaSlugRouteImport.update({
+  id: '/biblioteca/$slug',
+  path: '/biblioteca/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -89,6 +95,7 @@ export interface FileRoutesByFullPath {
   '/equipe': typeof EquipeRoute
   '/metodologia': typeof MetodologiaRoute
   '/sobre': typeof SobreRoute
+  '/biblioteca/$slug': typeof BibliotecaSlugRoute
   '/cases/$slug': typeof CasesSlugRoute
   '/segmentos/$slug': typeof SegmentosSlugRoute
   '/servicos/$slug': typeof ServicosSlugRoute
@@ -103,6 +110,7 @@ export interface FileRoutesByTo {
   '/equipe': typeof EquipeRoute
   '/metodologia': typeof MetodologiaRoute
   '/sobre': typeof SobreRoute
+  '/biblioteca/$slug': typeof BibliotecaSlugRoute
   '/cases/$slug': typeof CasesSlugRoute
   '/segmentos/$slug': typeof SegmentosSlugRoute
   '/servicos/$slug': typeof ServicosSlugRoute
@@ -118,6 +126,7 @@ export interface FileRoutesById {
   '/equipe': typeof EquipeRoute
   '/metodologia': typeof MetodologiaRoute
   '/sobre': typeof SobreRoute
+  '/biblioteca/$slug': typeof BibliotecaSlugRoute
   '/cases/$slug': typeof CasesSlugRoute
   '/segmentos/$slug': typeof SegmentosSlugRoute
   '/servicos/$slug': typeof ServicosSlugRoute
@@ -134,6 +143,7 @@ export interface FileRouteTypes {
     | '/equipe'
     | '/metodologia'
     | '/sobre'
+    | '/biblioteca/$slug'
     | '/cases/$slug'
     | '/segmentos/$slug'
     | '/servicos/$slug'
@@ -148,6 +158,7 @@ export interface FileRouteTypes {
     | '/equipe'
     | '/metodologia'
     | '/sobre'
+    | '/biblioteca/$slug'
     | '/cases/$slug'
     | '/segmentos/$slug'
     | '/servicos/$slug'
@@ -162,6 +173,7 @@ export interface FileRouteTypes {
     | '/equipe'
     | '/metodologia'
     | '/sobre'
+    | '/biblioteca/$slug'
     | '/cases/$slug'
     | '/segmentos/$slug'
     | '/servicos/$slug'
@@ -177,6 +189,7 @@ export interface RootRouteChildren {
   EquipeRoute: typeof EquipeRoute
   MetodologiaRoute: typeof MetodologiaRoute
   SobreRoute: typeof SobreRoute
+  BibliotecaSlugRoute: typeof BibliotecaSlugRoute
   CasesSlugRoute: typeof CasesSlugRoute
   SegmentosSlugRoute: typeof SegmentosSlugRoute
   ServicosSlugRoute: typeof ServicosSlugRoute
@@ -272,6 +285,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CasesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/biblioteca/$slug': {
+      id: '/biblioteca/$slug'
+      path: '/biblioteca/$slug'
+      fullPath: '/biblioteca/$slug'
+      preLoaderRoute: typeof BibliotecaSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -281,6 +301,7 @@ const rootRouteChildren: RootRouteChildren = {
   EquipeRoute: EquipeRoute,
   MetodologiaRoute: MetodologiaRoute,
   SobreRoute: SobreRoute,
+  BibliotecaSlugRoute: BibliotecaSlugRoute,
   CasesSlugRoute: CasesSlugRoute,
   SegmentosSlugRoute: SegmentosSlugRoute,
   ServicosSlugRoute: ServicosSlugRoute,
