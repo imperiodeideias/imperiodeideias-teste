@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SobreRouteImport } from './routes/sobre'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as MetodologiaRouteImport } from './routes/metodologia'
 import { Route as EquipeRouteImport } from './routes/equipe'
 import { Route as ContatoRouteImport } from './routes/contato'
@@ -26,6 +27,11 @@ import { Route as BibliotecaSlugRouteImport } from './routes/biblioteca.$slug'
 const SobreRoute = SobreRouteImport.update({
   id: '/sobre',
   path: '/sobre',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MetodologiaRoute = MetodologiaRouteImport.update({
@@ -94,6 +100,7 @@ export interface FileRoutesByFullPath {
   '/contato': typeof ContatoRoute
   '/equipe': typeof EquipeRoute
   '/metodologia': typeof MetodologiaRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sobre': typeof SobreRoute
   '/biblioteca/$slug': typeof BibliotecaSlugRoute
   '/cases/$slug': typeof CasesSlugRoute
@@ -109,6 +116,7 @@ export interface FileRoutesByTo {
   '/contato': typeof ContatoRoute
   '/equipe': typeof EquipeRoute
   '/metodologia': typeof MetodologiaRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sobre': typeof SobreRoute
   '/biblioteca/$slug': typeof BibliotecaSlugRoute
   '/cases/$slug': typeof CasesSlugRoute
@@ -125,6 +133,7 @@ export interface FileRoutesById {
   '/contato': typeof ContatoRoute
   '/equipe': typeof EquipeRoute
   '/metodologia': typeof MetodologiaRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sobre': typeof SobreRoute
   '/biblioteca/$slug': typeof BibliotecaSlugRoute
   '/cases/$slug': typeof CasesSlugRoute
@@ -142,6 +151,7 @@ export interface FileRouteTypes {
     | '/contato'
     | '/equipe'
     | '/metodologia'
+    | '/sitemap.xml'
     | '/sobre'
     | '/biblioteca/$slug'
     | '/cases/$slug'
@@ -157,6 +167,7 @@ export interface FileRouteTypes {
     | '/contato'
     | '/equipe'
     | '/metodologia'
+    | '/sitemap.xml'
     | '/sobre'
     | '/biblioteca/$slug'
     | '/cases/$slug'
@@ -172,6 +183,7 @@ export interface FileRouteTypes {
     | '/contato'
     | '/equipe'
     | '/metodologia'
+    | '/sitemap.xml'
     | '/sobre'
     | '/biblioteca/$slug'
     | '/cases/$slug'
@@ -188,6 +200,7 @@ export interface RootRouteChildren {
   ContatoRoute: typeof ContatoRoute
   EquipeRoute: typeof EquipeRoute
   MetodologiaRoute: typeof MetodologiaRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SobreRoute: typeof SobreRoute
   BibliotecaSlugRoute: typeof BibliotecaSlugRoute
   CasesSlugRoute: typeof CasesSlugRoute
@@ -206,6 +219,13 @@ declare module '@tanstack/react-router' {
       path: '/sobre'
       fullPath: '/sobre'
       preLoaderRoute: typeof SobreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/metodologia': {
@@ -300,6 +320,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContatoRoute: ContatoRoute,
   EquipeRoute: EquipeRoute,
   MetodologiaRoute: MetodologiaRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SobreRoute: SobreRoute,
   BibliotecaSlugRoute: BibliotecaSlugRoute,
   CasesSlugRoute: CasesSlugRoute,
