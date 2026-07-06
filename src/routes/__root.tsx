@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { WhatsAppFloat } from "@/components/site/WhatsAppFloat";
 import { SITE } from "@/lib/site";
 
 function NotFoundComponent() {
@@ -172,6 +173,7 @@ function RootComponent() {
           <Outlet />
         </main>
         <SiteFooter />
+        <WhatsAppFloat />
       </div>
     </QueryClientProvider>
   );
