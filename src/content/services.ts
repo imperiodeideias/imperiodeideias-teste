@@ -75,7 +75,7 @@ export const SERVICES: Service[] = [
   {
     slug: "branding",
     title: "Branding",
-    short: "Marcas que significam algo — e são reconhecidas por isso.",
+    short: "Marcas que significam algo - e são reconhecidas por isso.",
     summary:
       "Construção e gestão de marcas com propósito claro, identidade consistente e presença coerente em todos os pontos de contato.",
     whatIs:
