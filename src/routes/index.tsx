@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+            <h1 className="heading-hero mt-6 fade-in-up">teste</h1>
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Section, FAQ } from "@/components/site/Primitives";
