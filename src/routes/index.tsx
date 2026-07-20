@@ -62,7 +62,7 @@ function Home() {
       <section className="pt-16 lg:pt-24 pb-24 lg:pb-32">
         <div className="container-imperio grid gap-12 lg:grid-cols-12 lg:gap-16 items-end">
           <div className="lg:col-span-8">
-            <span className="eyebrow fade-in-up">Agência estratégica</span>
+            <span className="eyebrow fade-in-up">Agência super estratégica</span>
             <h1 className="heading-hero mt-6 fade-in-up">teste</h1>
           </div>
           <div className="lg:col-span-4 space-y-6">
