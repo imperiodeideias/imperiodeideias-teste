@@ -63,7 +63,7 @@ function Home() {
           <div className="lg:col-span-8">
             <span className="eyebrow fade-in-up">Agência estratégica</span>
             <h1 className="heading-hero mt-6 fade-in-up">
-              Estratégia<br />que vira<br /><span className="text-primary">execução.</span>
+              
             </h1>
           </div>
           <div className="lg:col-span-4 space-y-6">
@@ -192,7 +192,7 @@ function Home() {
       {/* COMO AJUDAMOS */}
       <Section
         eyebrow="Como ajudamos empresas"
-        title={<>Marcas fortes se constroem com <span className="text-primary">estratégia, criatividade e execução.</span></>}
+        title={<>Marcas fortes se constroem com <span className="text-primary"></>}
         intro="Não vendemos serviço solto. Ajudamos empresas a crescer com um sistema conectado: estratégia que orienta, criatividade que diferencia, execução que entrega."
       >
         <div className="grid gap-6 lg:grid-cols-3">
