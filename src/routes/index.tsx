@@ -63,7 +63,7 @@ function Home() {
         <div className="container-imperio grid gap-12 lg:grid-cols-12 lg:gap-16 items-end">
           <div className="lg:col-span-8">
             <span className="eyebrow fade-in-up">Agência estratégica</span>
-            
+            <h1 className="heading-hero mt-6 fade-in-up">teste</h1>
           </div>
           <div className="lg:col-span-4 space-y-6">
             <p className="text-lg text-muted-foreground leading-relaxed">
