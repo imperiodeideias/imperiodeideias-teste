@@ -191,7 +191,7 @@ function Home() {
       {/* COMO AJUDAMOS */}
       <Section
         eyebrow="Como ajudamos empresas"
-        title={<>Marcas fortes se constroem com <span className="text-primary"></>}
+        title={<>Marcas fortes se constroem com <span className="text-primary">método</span></>}
         intro="Não vendemos serviço solto. Ajudamos empresas a crescer com um sistema conectado: estratégia que orienta, criatividade que diferencia, execução que entrega."
       >
         <div className="grid gap-6 lg:grid-cols-3">
